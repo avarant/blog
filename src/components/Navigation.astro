@@ -1,0 +1,70 @@
+---
+import { NAV_LINKS, SITE } from "@/siteConfig.ts";
+---
+
+<header
+  class="mx-auto flex max-w-screen-sm flex-wrap items-center justify-between p-3 pb-8 font-sans sm:p-6"
+>
+  <a
+    href="/"
+    class="text-lg font-semibold text-black sm:text-xl dark:text-white"
+    >{SITE.title}</a
+  >
+  <nav class="flex items-center gap-3">
+    <ul class="flex list-none items-center gap-2 p-0 sm:gap-3">
+      {
+        Object.keys(NAV_LINKS).map((navItemKey) => {
+          return (
+            <li>
+              <a href={NAV_LINKS[navItemKey].path} class="prose">
+                {NAV_LINKS[navItemKey].label}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+    {/* GitHub icon link */}
+    <a
+      href="https://github.com/avarant"
+      class="text-muted-text dark:text-dark-muted-text hover:text-black dark:hover:text-white"
+      aria-label="GitHub repository"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="size-5"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.207 11.387.6.112.793-.262.793-.583 0-.288-.012-1.243-.018-2.25-3.338.725-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.238 1.84 1.238 1.07 1.835 2.807 1.305 3.493.998.108-.775.42-1.305.763-1.605-2.665-.304-5.466-1.332-5.466-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.536-1.523.118-3.176 0 0 1.008-.322 3.301 1.23A11.5 11.5 0 0 1 12 5.8c1.02.005 2.045.138 3.003.404 2.292-1.552 3.298-1.23 3.298-1.23.655 1.653.243 2.873.12 3.176.77.84 1.234 1.91 1.234 3.22 0 4.61-2.804 5.624-5.475 5.921.431.37.817 1.102.817 2.222 0 1.604-.015 2.896-.015 3.287 0 .323.192.699.8.581C20.565 21.796 24 17.297 24 12c0-6.63-5.37-12-12-12Z"
+        />
+      </svg>
+    </a>
+    {/* LinkedIn icon link */}
+    <a
+      href="https://www.linkedin.com/in/varant"
+      class="text-muted-text dark:text-dark-muted-text hover:text-black dark:hover:text-white"
+      aria-label="LinkedIn profile"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        width="24" 
+        height="24" 
+        viewBox="0 0 24 24" 
+        fill="currentColor" 
+        class="size-5"
+      >
+        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+      </svg>
+    </a>
+  </nav>
+</header>
