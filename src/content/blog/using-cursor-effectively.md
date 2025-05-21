@@ -90,7 +90,13 @@ Once you configure your `mcp.json` just tell your agent to create PRs or navigat
 
 Warning: be careful when downloading and running MCPs off the internet. Review what you're downloading. Use official MCPs when available.
 
-## 8. Sample Workflow (Putting it all together)
+### 8. Tips
+
+- Use Git to track/save changes and allow easy rollback
+- In Cursor Chat use the restore checkpoint button to revert changes
+- Be mindful of context. Models have varying but limited context windows. Try to keep your conversations short. Otherwise the model will eventually forget.
+
+## 9. Sample Workflow (Putting it all together)
 
 1. **Create PRD:** `/new file PRD.md` → outline feature requirements.
 2. **Generate task list:** *"Convert PRD into TASKS.md checklist"*.
