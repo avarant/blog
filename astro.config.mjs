@@ -11,7 +11,6 @@ export default defineConfig({
     },
   },
   site: "https://avarant.github.io",
-  base: "/blog/",
   vite: {
     plugins: [tailwindcss()],
   },
