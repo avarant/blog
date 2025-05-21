@@ -10,7 +10,8 @@ export default defineConfig({
       theme: "dark-plus",
     },
   },
-  site: "https://barebones.superwebthemes.com",
+  site: "https://avarant.github.io",
+  base: "/blog/",
   vite: {
     plugins: [tailwindcss()],
   },
