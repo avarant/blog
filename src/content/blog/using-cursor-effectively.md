@@ -12,7 +12,7 @@ tags: ["cursor", "ai", "productivity", "workflow"]
 
 ### 1.1 Enable models
 
-Enable Gemini 2.5 Pro in your Cursor Settngs
+Enable Gemini 2.5 Pro in your Cursor Settngs.
 See list of models supported models [here](https://docs.cursor.com/models).
 See [guide](https://x.com/ericzakariasson/status/1922434149568430304) on when to use which models.
 
@@ -25,17 +25,17 @@ See [guide](https://x.com/ericzakariasson/status/1922434149568430304) on when to
 
 ### 2.1 Built-in tools
 
-Cursor has builtin tools that it utilizes when you ask it something. See list [here](https://docs.cursor.com/chat/tools).
+Cursor has built-in tools that it utilizes when you ask it something. See list [here](https://docs.cursor.com/chat/tools).
 
-- Read file: read contents of a file in your codebase. (750 lines in max mode, 250 lines in regular mode)
-- List directory: list files in a directory
-- Codebase: semantic search on your codebase.
-- Grep: ctrl + f your codebase using grep
-- Search files: find files using fuzzy search
-- Web: search web. you can trigger a web search @Web
-- Fetch rules: retrieve list of rules
-- Edit: edit file
-- Run: run terminal command
+- `Read file`: read contents of a file in your codebase. (750 lines in max mode, 250 lines in regular mode)
+- `List directory`: list files in a directory
+- `Codebase`: semantic search on your codebase.
+- `Grep`: `ctrl + f` your codebase using grep
+- `Search files`: find files using fuzzy search
+- `Web`: search web. you can trigger a web search `@Web`
+- `Fetch rules`: retrieve list of rules
+- `Edit`: edit file
+- `Run`: run terminal command
 
 ### 2.2 Slash commands
 
@@ -48,7 +48,7 @@ Cursor chat understands **slash (/)** and **@** commands:
 | `/tests` | Generate unit tests for the current file. |
 | `/fix` | Attempt to automatically fix the selected code block. |
 | `@Web` | Trigger a live web search inside chat. |
-| `@Docs` | See available documentation built into Cursor | 
+| `@Docs` | See available documentation built into Cursor. |
 
 ## 3. Prompt Crafting 101
 
@@ -66,22 +66,22 @@ There are currently 3 modes available in the Chat UI.
 | **Edit** | Refactor a region or entire file with diff preview. |
 | **Agent** | Multi-step tasks (e.g. *"migrate project to Astro v5"*).  The agent will plan, execute edits, and run tests in the background. |
 
-Additionally, there is the Tab model (superpowered autocomplete). When you're editing a file Cursor will suggest a line completion. If you press tab it will move your cursor to the next line to edit.
+Additionally, there is the Tab model (superpowered autocomplete). When you're editing a file Cursor will suggest a line completion. If you press `tab` it will move your cursor to the next line to edit.
 
 ## 5. Organising Work with PRD.md & TASKS.md
 
-Large features start with a lightweight **PRD.md** (problem, goals, non-goals).  I then break work into a checklist in **TASKS.md**.  Cursor's agent can read these docs and execute the tasks sequentially – fantastic for repetitive migrations.
+Large features start with a lightweight `PRD.md` (problem, goals, non-goals).  I then break work into a checklist in `TASKS.md`.  Cursor's agent can read these docs and execute the tasks sequentially – fantastic for repetitive migrations.
 
 ## 6. Markdown tools: Mermaid & Marp
 
 * [Mermaid](https://mermaid.js.org/) – create flow charts and diagrams using Markdown
 * [Marp slide decks](https://marp.app/) – create slide decks using Markdown
 
-## 8. MCP (Model Context Protocol)
+## 7. MCP (Model Context Protocol)
 
-tools to the extend capabilities of your coding assistant
+MCPs are tools to extend the capabilities of your coding assistant.
 
-some MCPs I use
+Some MCPs I use:
 
 - [Github](https://github.com/github/github-mcp-server): lets Cursor create pull requests, read issues
 - [Playwright](https://github.com/microsoft/playwright-mcp): lets Cursor control your browser
@@ -90,7 +90,7 @@ Once you configure your `mcp.json` just tell your agent to create PRs or navigat
 
 Warning: be careful when downloading and running MCPs off the internet. Review what you're downloading. Use official MCPs when available.
 
-## 9. Sample Workflow (Putting it all together)
+## 8. Sample Workflow (Putting it all together)
 
 1. **Create PRD:** `/new file PRD.md` → outline feature requirements.
 2. **Generate task list:** *"Convert PRD into TASKS.md checklist"*.
