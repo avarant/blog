@@ -43,12 +43,12 @@ Cursor chat understands **slash (/)** and **@** commands:
 
 | Command | What it does |
 |---------|--------------|
+| `/` | See available commands. |
 | `/explain` | Explain highlighted code in plain English. |
 | `/tests` | Generate unit tests for the current file. |
 | `/fix` | Attempt to automatically fix the selected code block. |
 | `@Web` | Trigger a live web search inside chat. |
-| `/` | See available commands. |
-| `@Docs` | See available documentation built into Cursor |
+| `@Docs` | See available documentation built into Cursor | 
 
 ## 3. Prompt Crafting 101
 
