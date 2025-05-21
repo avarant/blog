@@ -13,8 +13,8 @@ tags: ["cursor", "ai", "productivity", "workflow"]
 ### 1.1 Enable models
 
 Enable Gemini 2.5 Pro in your Cursor Settngs
-See list of models supported models (here)[https://docs.cursor.com/models].
-See (guide)[https://x.com/ericzakariasson/status/1922434149568430304] on when to use which models.
+See list of models supported models [here](https://docs.cursor.com/models).
+See [guide](https://x.com/ericzakariasson/status/1922434149568430304) on when to use which models.
 
 ### 1.2 Add documentation & rules
 
@@ -25,7 +25,7 @@ See (guide)[https://x.com/ericzakariasson/status/1922434149568430304] on when to
 
 ### 2.1 Built-in tools
 
-Cursor has builtin tools that it utilizes when you ask it something. See list (here)[https://docs.cursor.com/chat/tools].
+Cursor has builtin tools that it utilizes when you ask it something. See list [here](https://docs.cursor.com/chat/tools).
 
 - Read file: read contents of a file in your codebase. (750 lines in max mode, 250 lines in regular mode)
 - List directory: list files in a directory
@@ -48,6 +48,7 @@ Cursor chat understands **slash (/)** and **@** commands:
 | `/fix` | Attempt to automatically fix the selected code block. |
 | `@Web` | Trigger a live web search inside chat. |
 | `/` | See available commands. |
+| `@Docs` | See available documentation built into Cursor |
 
 ## 3. Prompt Crafting 101
 
@@ -73,8 +74,8 @@ Large features start with a lightweight **PRD.md** (problem, goals, non-goals). 
 
 ## 6. Markdown tools: Mermaid & Marp
 
-* (Mermaid)[https://mermaid.js.org/] – create flow charts and diagrams using Markdown
-* (Marp slide decks)[https://marp.app/] – create slide decks using Markdown
+* [Mermaid](https://mermaid.js.org/) – create flow charts and diagrams using Markdown
+* [Marp slide decks](https://marp.app/) – create slide decks using Markdown
 
 ## 8. MCP (Model Context Protocol)
 
@@ -82,8 +83,8 @@ tools to the extend capabilities of your coding assistant
 
 some MCPs I use
 
-- (Github)[https://github.com/github/github-mcp-server]: lets Cursor create pull requests, read issues
-- (Playwright)[https://github.com/microsoft/playwright-mcp]: lets Cursor control your browser
+- [Github](https://github.com/github/github-mcp-server): lets Cursor create pull requests, read issues
+- [Playwright](https://github.com/microsoft/playwright-mcp): lets Cursor control your browser
 
 Once you configure your `mcp.json` just tell your agent to create PRs or navigate to `localhost:8000`.
 
