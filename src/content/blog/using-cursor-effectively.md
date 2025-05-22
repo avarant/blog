@@ -118,3 +118,7 @@ It is also fairly straightforward to setup your own local MCP server. See the of
 3. **Run Agent:** switch to *Agent* mode → *"Implement tasks"*.
 4. **Write tests:** highlight changed files → `/tests`.
 5. **Review in blog:** ask Cursor to open a Playwright browser → navigate to local dev server → visually review the changes and capture a screenshot for documentation if needed.
+
+## 10. Afterthought
+
+One thing I find super powerful is something I call a closed loop. Basically, if you're able to define your task in a way where the coding assistant can verify/test its work without human intervention, then it can get much more work done without needing a human in the loop.
