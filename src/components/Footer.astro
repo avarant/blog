@@ -2,10 +2,13 @@
 import { SITE } from "@/siteConfig";
 import ThemeToggle from "@/components/ThemeToggle.astro";
 
-const year = new Date().getFullYear();
+const year = 2025;
 ---
 
 <footer
   class="mx-auto flex w-full flex-col items-start gap-6 pt-16 pb-24 sm:flex-row sm:items-center sm:justify-between sm:gap-8"
 >
+  <div class="text-sm text-neutral-500 dark:text-neutral-400">
+    &copy; {year} Varant Arabian
+  </div>
 </footer>
