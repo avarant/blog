@@ -21,7 +21,7 @@ See [guide](https://x.com/ericzakariasson/status/1922434149568430304) on when to
 ### 1.2 Add documentation & rules
 
 *  Open **Settings → Docs → + Add** and paste the public URL of any library/SDK you frequently use.  Cursor will automatically index the docs and surface them during chat.
-*  Under **Settings → Rules** you can define project-wide guidelines (coding standards, ESLint rules, architectural constraints, etc.).  These rules are injected into every prompt so you don't have to repeat yourself.
+*  Under **Settings → Rules** you can define project-wide guidelines (coding standards, ESLint rules, architectural constraints, etc.).  These rules can be referenced manually, injected into every prompt or can be injected based on file type.
 
 ## 2. Built-in Tools & Commands
 
@@ -54,8 +54,8 @@ Cursor chat understands **slash (/)** and **@** commands:
 
 ## 3. Prompt Crafting 101
 
-* **Be specific** – instead of *"create a new lambda fucntion"*, write *"create a new python3.12 lambda function using terraform. put the terraform code in the infra/ directory. see existing lambda @infra/lambda1.tf. put the python code in the lambda_functions/ directory."*.
-* **Give context** – open relevant files and use `/add open files to context` so the model sees the full picture.
+* **Be specific** – instead of *"create a new lambda function"*, write *"create a new python3.12 lambda function using terraform. put the terraform code in the infra/ directory. see existing lambda @infra/lambda1.tf. put the python code in the lambda_functions/ directory."*.
+* **Give context** – ensure relevant files are open in your editor so the model sees the full picture. Alternatively, you can copy-paste snippets or use features that explicitly add file content to the chat context if available in your Cursor version.
 * **Iterate** – refine the prompt as needed, it doesn't always do exactly what you want on the first try.
 
 ## 4. Modes
@@ -63,7 +63,7 @@ Cursor chat understands **slash (/)** and **@** commands:
 There are multiple ways to use Cursor.
 
 1. Chat: chat ui. open via Cmd + I (on mac)
-2. Tab: superpowered autocomplete. When you're editing a file Cursor will suggest a line completion. If you press `tab` it will move your cursor to the next line to edit.
+2. Tab: superpowered autocomplete. When you're editing a file Cursor will suggest a line completion (often multi-line and context-aware). If you press `tab` it will move your cursor to the next line to edit.
 3. Inline: select a piece of text and press Cmd + K (on mac)
 
 There are currently 3 modes available in the Chat UI.
@@ -99,7 +99,7 @@ Some MCPs I use:
 - [Github](https://github.com/github/github-mcp-server): lets coding assistant create pull requests, read issues
 - [Playwright](https://github.com/microsoft/playwright-mcp): lets coding assistant control your browser
 
-Once you configure your `mcp.json` just tell your agent to create PRs or navigate to `localhost:8000`.
+Once you configure your `mcp.json` (see the official SDK for setup guidance), you can instruct your agent to perform actions like creating PRs or, if you're running a local web server, navigating to `localhost:8000` using the Playwright MCP.
 
 It is also fairly straightforward to setup your own local MCP server. See the official [MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk).
 
@@ -117,4 +117,4 @@ It is also fairly straightforward to setup your own local MCP server. See the of
 2. **Generate task list:** *"Convert PRD into TASKS.md checklist"*.
 3. **Run Agent:** switch to *Agent* mode → *"Implement tasks"*.
 4. **Write tests:** highlight changed files → `/tests`.
-5. **Review in blog:** ask Cursor to open a Playwright browser → navigate to local dev server → capture screenshot.
+5. **Review in blog:** ask Cursor to open a Playwright browser → navigate to local dev server → visually review the changes and capture a screenshot for documentation if needed.
