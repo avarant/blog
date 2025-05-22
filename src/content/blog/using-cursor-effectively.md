@@ -121,4 +121,4 @@ It is also fairly straightforward to setup your own local MCP server. See the of
 
 ## 10. Afterthought
 
-One thing I find super powerful is something I call a closed loop. Basically, if you're able to define your task in a way where the coding assistant can verify/test its work without human intervention, then it can get much more work done without needing a human in the loop.
+One particularly powerful concept is what I call a 'closed-loop' workflow. If you can define your task in a way such that the coding assistant can verify its work-through automated tests, MCPs, curl requests, or other checks—it significantly boosts productivity. This self-checking capability allows the assistant to iterate and complete more complex tasks with minimal human intervention, effectively closing the loop on the development cycle.
