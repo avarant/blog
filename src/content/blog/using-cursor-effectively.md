@@ -10,11 +10,13 @@ tags: ["cursor", "ai", "productivity", "workflow"]
 
 ## 1. Initial Setup & Profile Configuration
 
-### 1.1 Enable models
+### 1.1 Enable models and settings
 
 Enable Gemini 2.5 Pro in your Cursor Settngs.
 See list of models supported models [here](https://docs.cursor.com/models).
 See [guide](https://x.com/ericzakariasson/status/1922434149568430304) on when to use which models.
+
+<!-- Enable *Full folder contents* under Cursor Settings → Features. -->
 
 ### 1.2 Add documentation & rules
 
@@ -52,29 +54,40 @@ Cursor chat understands **slash (/)** and **@** commands:
 
 ## 3. Prompt Crafting 101
 
-* **Be specific** – instead of *"optimize this function"*, write *"optimize this O(n²) loop for large arrays (> 10 k) while keeping memory < 50 MB"*.
+* **Be specific** – instead of *"create a new lambda fucntion"*, write *"create a new python3.12 lambda function using terraform. put the terraform code in the infra/ directory. see existing lambda @infra/lambda1.tf. put the python code in the lambda_functions/ directory."*.
 * **Give context** – open relevant files and use `/add open files to context` so the model sees the full picture.
-* **Iterate** – refine the prompt, don't expect perfection on the first pass.
+* **Iterate** – refine the prompt as needed, it doesn't always do exactly what you want on the first try.
 
 ## 4. Modes
+
+There are multiple ways to use Cursor.
+
+1. Chat: chat ui. open via Cmd + I (on mac)
+2. Tab: superpowered autocomplete. When you're editing a file Cursor will suggest a line completion. If you press `tab` it will move your cursor to the next line to edit.
+3. Inline: select a piece of text and press Cmd + K (on mac)
 
 There are currently 3 modes available in the Chat UI.
 
 | Mode | When to use |
 |------|-------------|
-| **Ask** | Quick questions, code explanations, one-off commands. |
-| **Edit** | Refactor a region or entire file with diff preview. |
-| **Agent** | Multi-step tasks (e.g. *"migrate project to Astro v5"*).  The agent will plan, execute edits, and run tests in the background. |
-
-Additionally, there is the Tab model (superpowered autocomplete). When you're editing a file Cursor will suggest a line completion. If you press `tab` it will move your cursor to the next line to edit.
+| **Ask** | Quick questions, discussions, code explanations. |
+| **Edit** | Refactor or rewrite files with diff preview (no terminal commands). |
+| **Agent** | Multi-step tasks (e.g. *"migrate project to Astro v5"*).  The agent will plan, execute edits, run commands and create new files as needed. |
 
 ## 5. Organising Work with PRD.md & TASKS.md
 
-Large features start with a lightweight `PRD.md` (problem, goals, non-goals).  I then break work into a checklist in `TASKS.md`.  Cursor's agent can read these docs and execute the tasks sequentially – fantastic for repetitive migrations.
+The way I like to work larger tasks and start new projects is to create a project requirements document (`PRD.md`) and a tasks document (`TASKS.md`).
+
+- `PRD.md`: defines the high level requirements of the project. provides useful context
+- `TASKS.md`: checklist of small tasks that Cursor can complete
+
+I generally start crafting a `PRD.md` by discussing the project with a powerful model such as `o3`. Once the project requirements are defined I ask the model to split the requirements into small tasks that an AI coding assistant can handle.
+
+Once I have both files I @ both in the Cursor Chat and ask it to complete each task and check off each task after completing it. Cursor will execute sequentially and iterate until it's completed all tasks. Note you may need to accept commands and click resume (Cursor stops running after 25 tool calls by default).
 
 ## 6. Markdown tools: Mermaid & Marp
 
-* [Mermaid](https://mermaid.js.org/) – create flow charts and diagrams using Markdown
+* [Mermaid](https://mermaid.js.org/) – create flow charts and diagrams using Markdown. Github supports mermaid in markdown files, just use ```mermaid.
 * [Marp slide decks](https://marp.app/) – create slide decks using Markdown
 
 ## 7. MCP (Model Context Protocol)
@@ -83,22 +96,24 @@ MCPs are tools to extend the capabilities of your coding assistant.
 
 Some MCPs I use:
 
-- [Github](https://github.com/github/github-mcp-server): lets Cursor create pull requests, read issues
-- [Playwright](https://github.com/microsoft/playwright-mcp): lets Cursor control your browser
+- [Github](https://github.com/github/github-mcp-server): lets coding assistant create pull requests, read issues
+- [Playwright](https://github.com/microsoft/playwright-mcp): lets coding assistant control your browser
 
 Once you configure your `mcp.json` just tell your agent to create PRs or navigate to `localhost:8000`.
 
-Warning: be careful when downloading and running MCPs off the internet. Review what you're downloading. Use official MCPs when available.
+It is also fairly straightforward to setup your own local MCP server. See the official [MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk).
+
+*Warning:* be careful when downloading and running MCPs off the internet. Review what you're downloading. Use official MCPs when available.
 
 ### 8. Tips
 
-- Use Git to track/save changes and allow easy rollback
-- In Cursor Chat use the restore checkpoint button to revert changes
-- Be mindful of context. Models have varying but limited context windows. Try to keep your conversations short. Otherwise the model will eventually forget.
+- Use *Git* to track/save changes and allow easy rollback.
+- In Cursor Chat use the restore checkpoint button to revert changes as needed.
+- Be mindful of context. Models have varying but limited context windows. Try to keep your conversations short. Otherwise the model will eventually forget things.
 
 ## 9. Sample Workflow (Putting it all together)
 
-1. **Create PRD:** `/new file PRD.md` → outline feature requirements.
+1. **Create PRD:** `PRD.md` → outline feature requirements.
 2. **Generate task list:** *"Convert PRD into TASKS.md checklist"*.
 3. **Run Agent:** switch to *Agent* mode → *"Implement tasks"*.
 4. **Write tests:** highlight changed files → `/tests`.
