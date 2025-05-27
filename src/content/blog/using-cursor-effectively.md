@@ -75,7 +75,7 @@ There are currently 3 modes available in the Chat UI.
 
 ## 5. Context
 
-Context management is key for effective AI-assisted development. One difference between vibe coding and effective AI assisted software development is how much context you provide the AI assistant. The vibe coder passes the entire repo or expects the AI to figure it out, whereas a software engineer can carefuly choose what files to put into context for optimal results.
+Context management is key for effective AI-assisted development. One difference between vibe coding and effective AI assisted software development is how much context you provide the AI assistant. The vibe coder passes the entire repo or expects the AI to figure it out using built-in tools, whereas a software engineer can carefuly choose what files to put into context for optimal results.
 
 **Best practices for context management:**
 
