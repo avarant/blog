@@ -20,7 +20,7 @@ See [guide](https://x.com/ericzakariasson/status/1922434149568430304) on when to
 
 ### 1.2 Add documentation & rules
 
-*  Open **Settings → Features → Docs → + Add** and paste the public URL of any library/SDK you frequently use.  Cursor will automatically index the docs and surface them during chat.
+*  Open **Settings → Features → Docs → + Add** and paste the public URL of any library/SDK you frequently use. Cursor will automatically index the docs. You can add the doc into context using `@`.
 *  Under **Settings → Rules** you can define project-wide guidelines (coding standards, ESLint rules, architectural constraints, etc.).  These rules can be referenced manually, injected into every prompt or can be injected based on file type.
 
 ## 2. Built-in Tools & Commands
