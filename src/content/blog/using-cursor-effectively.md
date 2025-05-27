@@ -13,7 +13,7 @@ tags: ["cursor", "ai", "productivity", "workflow"]
 ### 1.1 Enable models and settings
 
 Enable Gemini 2.5 Pro in your Cursor Settings.
-See list of models supported models [here](https://docs.cursor.com/models).
+See list of supported models [here](https://docs.cursor.com/models).
 See [guide](https://x.com/ericzakariasson/status/1922434149568430304) on when to use which models.
 
 <!-- Enable *Full folder contents* under Cursor Settings → Features. -->
