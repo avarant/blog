@@ -1,0 +1,155 @@
+---
+interface Props {
+  headings: {
+    depth: number;
+    slug: string;
+    text: string;
+  }[];
+}
+
+const { headings } = Astro.props;
+
+const toc = headings.filter((heading) => heading.depth <= 3);
+---
+
+{
+  toc.length > 0 && (
+    <div class="toc-container rounded-lg border border-neutral-200 bg-neutral-50 p-4 dark:border-neutral-800 dark:bg-neutral-900">
+      <h2 class="mb-4 text-lg font-semibold text-black dark:text-white">
+        Table of Contents
+      </h2>
+      <nav id="toc-nav">
+        <ul class="space-y-2">
+          {toc.map((heading) => (
+            <li
+              class={`toc-item toc-level-${heading.depth}`}
+              style={`margin-left: ${(heading.depth - 1) * 1.2}rem`}
+            >
+              <a
+                href={`#${heading.slug}`}
+                data-heading={heading.slug}
+                class="toc-link block text-sm text-muted-text hover:text-link dark:text-dark-muted-text dark:hover:text-dark-link transition-colors duration-200 py-1 px-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800"
+              >
+                {heading.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  )
+}
+
+<script is:inline>
+  function initTableOfContents() {
+    // Prevent multiple initializations
+    if (window.tocInitialized) return;
+    window.tocInitialized = true;
+    
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const headings = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6')).filter(h => h.id);
+    
+    if (tocLinks.length === 0 || headings.length === 0) return;
+
+    let activeSection = null;
+
+    function updateActiveSection() {
+      const scrollPosition = window.scrollY + 100; // Offset for better triggering
+      let currentActive = null;
+      
+      // Find the heading that's currently visible (closest to top)
+      for (let i = headings.length - 1; i >= 0; i--) {
+        const heading = headings[i];
+        if (heading.offsetTop <= scrollPosition) {
+          currentActive = heading;
+          break;
+        }
+      }
+      
+      // If we found a heading and it's different from current active
+      if (currentActive && currentActive !== activeSection) {
+        activeSection = currentActive;
+        
+        // Remove active class from all links
+        tocLinks.forEach(link => {
+          link.classList.remove('toc-active');
+        });
+        
+        // Add active class to current link
+        const tocLink = document.querySelector(`[data-heading="${currentActive.id}"]`);
+        if (tocLink) {
+          tocLink.classList.add('toc-active');
+        }
+      }
+    }
+
+    // Handle click events for smooth scrolling
+    tocLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('data-heading');
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+          
+          // Update URL without triggering page reload
+          history.pushState(null, '', `#${targetId}`);
+        }
+      });
+    });
+
+    // Add scroll listener
+    window.addEventListener('scroll', updateActiveSection);
+    
+    // Run initial check
+    setTimeout(updateActiveSection, 100);
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTableOfContents);
+  } else {
+    initTableOfContents();
+  }
+</script>
+
+<style>
+  .toc-item {
+    line-height: 1.4;
+  }
+  
+  .toc-level-1 {
+    font-weight: 600;
+  }
+  
+  .toc-level-2 {
+    font-weight: 500;
+  }
+  
+  .toc-level-3 {
+    font-weight: 400;
+  }
+
+  .toc-link.toc-active {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+    color: white !important;
+    font-weight: 700 !important;
+    border-left: 4px solid #fbbf24 !important;
+    padding-left: calc(0.5rem - 4px) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3) !important;
+    transform: translateX(2px) !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .dark .toc-link.toc-active {
+    background: linear-gradient(135deg, #1e40af, #3730a3) !important;
+    color: white !important;
+    border-left-color: #fbbf24 !important;
+    box-shadow: 0 2px 8px rgba(30, 64, 175, 0.5) !important;
+  }
+</style>

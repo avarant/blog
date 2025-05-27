@@ -2,7 +2,8 @@
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import { Image } from "astro:assets";
 
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import TableOfContents from "@/components/TableOfContents.astro";
 
 import SeoPost from "@/components/SeoPost.astro";
 
@@ -21,38 +22,54 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
 ---
 
-<BaseLayout>
+<BlogLayout>
   <SeoPost slot="head" entry={entry} />
-  <div>
-    {
-      entry.data.image && (
-        <Image
-          src={entry.data.image}
-          alt={entry.data.imageAlt || ""}
-          class="mb-12 h-auto w-full"
-          draggable="false"
-        />
-      )
-    }
-    <h1
-      class="text-[36px] leading-snug font-bold text-balance text-black dark:text-white"
-    >
-      {entry.data.title}
-    </h1>
-    <p class="text-muted-text dark:text-dark-muted-text mt-3">
-      {formatDate(entry.data.publicationDate)}
-    </p>
-    <hr
-      class="border-muted-text dark:border-dark-muted-text my-12 border-[0.5px] opacity-10 dark:opacity-15"
-    />
-    <div class="prose mx-auto">
-      <Content />
-    </div>
-    <hr
-      class="border-muted-text dark:border-dark-muted-text my-32 border-[0.5px] opacity-10 dark:opacity-15"
-    />
+  
+  <!-- Mobile TOC -->
+  <div class="lg:hidden mb-8">
+    <TableOfContents headings={headings} />
   </div>
-</BaseLayout>
+
+  <div class="flex gap-8 lg:gap-12">
+    <!-- Main content -->
+    <div class="flex-1 min-w-0">
+      {
+        entry.data.image && (
+          <Image
+            src={entry.data.image}
+            alt={entry.data.imageAlt || ""}
+            class="mb-12 h-auto w-full"
+            draggable="false"
+          />
+        )
+      }
+      <h1
+        class="text-[36px] leading-snug font-bold text-balance text-black dark:text-white"
+      >
+        {entry.data.title}
+      </h1>
+      <p class="text-muted-text dark:text-dark-muted-text mt-3">
+        {formatDate(entry.data.publicationDate, { month: "long", day: "numeric", year: "numeric" })}
+      </p>
+      <hr
+        class="border-muted-text dark:border-dark-muted-text my-12 border-[0.5px] opacity-10 dark:opacity-15"
+      />
+      <div class="prose mx-auto lg:mx-0 lg:max-w-none">
+        <Content />
+      </div>
+      <hr
+        class="border-muted-text dark:border-dark-muted-text my-32 border-[0.5px] opacity-10 dark:opacity-15"
+      />
+    </div>
+    
+    <!-- Desktop Sidebar with TOC -->
+    <div class="hidden lg:block w-72 flex-shrink-0">
+      <div class="sticky top-8">
+        <TableOfContents headings={headings} />
+      </div>
+    </div>
+  </div>
+</BlogLayout>

@@ -46,9 +46,8 @@ Cursor chat understands **slash (/)** and **@** commands:
 | Command | What it does |
 |---------|--------------|
 | `/` | See available commands. |
-| `/explain` | Explain highlighted code in plain English. |
-| `/tests` | Generate unit tests for the current file. |
-| `/fix` | Attempt to automatically fix the selected code block. |
+| `/Generate Cursor Rules` | Generate Cursor rules for your project based on your codebase. |
+| `/Add Open Files to Context` | Add all currently open files to the chat context. |
 | `@Web` | Trigger a live web search inside chat. |
 | `@Docs` | See available documentation built into Cursor. |
 
@@ -74,7 +73,19 @@ There are currently 3 modes available in the Chat UI.
 | **Edit** | Refactor or rewrite files with diff preview (no terminal commands). |
 | **Agent** | Multi-step tasks (e.g. *"migrate project to Astro v5"*).  The agent will plan, execute edits, run commands and create new files as needed. |
 
-## 5. Organising Work with PRD.md & TASKS.md
+## 5. Context
+
+Context management is key for effective AI-assisted development. One difference between vibe coding and effective AI assisted software development is how much context you provide the AI assistant. The vibe coder passes the entire repo or expects the AI to figure it out, whereas a software engineer can carefuly choose what files to put into context for optimal results.
+
+**Best practices for context management:**
+
+- **Start minimal**: Begin with just the files directly related to your task
+- **Use @ mentions**: Explicitly reference relevant files, docs, or web resources using `@filename` or `@Web`
+- **Keep conversations focused**: Avoid mixing unrelated topics in a single chat session
+
+Remember: more context isn't always better. A focused, relevant context window often yields superior results compared to dumping your entire codebase into the conversation.
+
+## 6. Organising Work with PRD.md & TASKS.md
 
 The way I like to work larger tasks and start new projects is to create a project requirements document (`PRD.md`) and a tasks document (`TASKS.md`).
 
@@ -85,12 +96,12 @@ I generally start crafting a `PRD.md` by discussing the project with a powerful 
 
 Once I have both files I @ both in the Cursor Chat and ask it to complete each task and check off each task after completing it. Cursor will execute sequentially and iterate until it's completed all tasks. Note you may need to accept commands and click resume (Cursor stops running after 25 tool calls by default).
 
-## 6. Markdown tools: Mermaid & Marp
+## 7. Markdown tools: Mermaid & Marp
 
 * [Mermaid](https://mermaid.js.org/) – create flow charts and diagrams using Markdown. Github supports mermaid in markdown files, just use ```mermaid.
 * [Marp slide decks](https://marp.app/) – create slide decks using Markdown
 
-## 7. MCP (Model Context Protocol)
+## 8. MCP (Model Context Protocol)
 
 MCPs are tools to extend the capabilities of your coding assistant.
 
@@ -105,13 +116,13 @@ It is also fairly straightforward to setup your own local MCP server. See the of
 
 *Warning:* be careful when downloading and running MCPs off the internet. Review what you're downloading. Use official MCPs when available.
 
-### 8. Tips
+## 9. Tips
 
 - Use *Git* to track/save changes and allow easy rollback.
 - In Cursor Chat use the restore checkpoint button to revert changes as needed.
 - Be mindful of context. Models have varying but limited context windows. Try to keep your conversations short. Otherwise the model will eventually forget things.
 
-## 9. Sample Workflow (Putting it all together)
+## 10. Sample Workflow (Putting it all together)
 
 1. **Create PRD:** `PRD.md` → outline feature requirements.
 2. **Generate task list:** *"Convert PRD into TASKS.md checklist"*.
@@ -119,6 +130,6 @@ It is also fairly straightforward to setup your own local MCP server. See the of
 4. **Write tests:** highlight changed files → `/tests`.
 5. **Review in blog:** ask Cursor to open a Playwright browser → navigate to local dev server → visually review the changes and capture a screenshot for documentation if needed.
 
-## 10. Afterthought
+## 11. Afterthought
 
 One particularly powerful concept is what I call a "closed-loop" workflow. If you can define your task in a way such that the coding assistant can verify its work — through automated tests, MCP tool use, curl requests, or other checks — it significantly boosts productivity. This self-checking capability allows the assistant to iterate and complete complex tasks with minimal human intervention, effectively closing the loop on the development cycle.
