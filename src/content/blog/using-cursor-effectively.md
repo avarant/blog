@@ -49,12 +49,12 @@ Cursor chat understands **slash (/)** and **@** commands:
 | `/Generate Cursor Rules` | Generate Cursor rules for your project based on your codebase. |
 | `/Add Open Files to Context` | Add all currently open files to the chat context. |
 | `@Web` | Trigger a live web search inside chat. |
-| `@Docs` | See available documentation built into Cursor. |
+| `@Docs` | See documentation added by you or built into Cursor. |
 
 ## 3. Prompt Crafting 101
 
 * **Be specific** – instead of *"create a new lambda function"*, write *"create a new python3.12 lambda function using terraform. put the terraform code in the infra/ directory. see existing lambda @infra/lambda1.tf. put the python code in the lambda_functions/ directory."*.
-* **Give context** – ensure relevant files are open in your editor so the model sees the full picture. Alternatively, you can copy-paste snippets or use features that explicitly add file content to the chat context if available in your Cursor version.
+* **Give context** – reference relevant files and docs using `@`.
 * **Iterate** – refine the prompt as needed, it doesn't always do exactly what you want on the first try.
 
 ## 4. Modes
