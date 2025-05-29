@@ -69,9 +69,9 @@ There are currently 3 modes available in the Chat UI.
 
 | Mode | When to use |
 |------|-------------|
-| **Ask** | Quick questions, discussions, code explanations. |
-| **Edit** | Refactor or rewrite files with diff preview (no terminal commands). |
 | **Agent** | Multi-step tasks (e.g. *"migrate project to Astro v5"*).  The agent will plan, execute edits, run commands and create new files as needed. |
+| **Ask** | Quick questions, discussions, code explanations. |
+| **Manual** | Refactor or rewrite files with diff preview (no terminal commands). |
 
 ## 5. Context
 
