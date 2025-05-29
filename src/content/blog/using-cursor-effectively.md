@@ -125,10 +125,9 @@ It is also fairly straightforward to setup your own local MCP server. See the of
 ## 10. Sample Workflow (Putting it all together)
 
 1. **Create PRD:** `PRD.md` → outline feature requirements.
-2. **Generate task list:** *"Convert PRD into TASKS.md checklist"*.
-3. **Run Agent:** switch to *Agent* mode → *"Implement tasks"*.
-4. **Write tests:** highlight changed files → `/tests`.
-5. **Review in blog:** ask Cursor to open a Playwright browser → navigate to local dev server → visually review the changes and capture a screenshot for documentation if needed.
+2. **Generate task list:** Convert PRD into TASKS.md checklist using **o3**.
+3. **Run Agent:** 
+ > @PRD.md @TASKS.md execute each task in TASKS.md. after completing each task check off the checkbox. after completing all changes to navigate to `localhost:3000` and review the changes
 
 ## 11. Afterthought
 
